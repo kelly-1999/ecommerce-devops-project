@@ -1,0 +1,48 @@
+git commit -m "Initial project structure"
+git branch -M main
+git remote add origin https://github.com/kelly-1999/ecommerce-devops-project.git
+git push -u origin main
+
+
+to run the java Api go to:
+
+C:\Users\kerry\OneDrive\Desktop\ecommerce-devops-project\product-service-java\product-service>
+
+then after that run the following command:
+
+mvn spring-boot:run
+
+to test it go: http://localhost:8080/products
+and keep that terminal OPEN.
+
+
+
+
+to start a python api (order one) first you must enter into the virtual environment. do this:
+
+C:\Users\kerry\OneDrive\Desktop\ecommerce-devops-project\order-service-python   <= go here first
+C:\Users\kerry\OneDrive\Desktop\ecommerce-devops-project\order-service-python>venv\Scripts\activate  <= then enter this to activate virtual environment
+
+then it will appear like this:
+
+(venv) C:\Users\kerry\OneDrive\Desktop\ecommerce-devops-project\order-service-python>
+
+after that run this:
+python app.py
+
+to test use: http://localhost:5000/orders
+and keep that terminal OPEN.
+to go outside of virtual environment type: " deactivate "
+
+to post using post man, go to postman application.
+
+
+
+
+
+
+
+
+
+
+
