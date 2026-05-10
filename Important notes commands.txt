@@ -39,6 +39,25 @@ to post using post man, go to postman application.
 
 
 
+For frontend first cd into this folder:
+C:\Users\kerry\OneDrive\Desktop\ecommerce-devops-project\frontend\frontend>
+then enter the following:npm start 
+to test: http://localhost:3000/
+
+
+
+to run the java container (product.....) 
+docker run -p 8080:8080 product-service
+
+to run the python container (order....)
+docker run -p 5000:5000 order-service
+
+
+
+
+
+
+
 
 
 

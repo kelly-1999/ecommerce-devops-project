@@ -1,1 +1,0 @@
-# Ecommerce DevOps Project 

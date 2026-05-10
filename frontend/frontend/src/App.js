@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch("http://localhost:8080/products")
+    fetch("http://product-service:8080/products")
       .then(res => res.json())
       .then(data => setProducts(data));
 
