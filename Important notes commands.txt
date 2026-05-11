@@ -52,7 +52,8 @@ docker run -p 8080:8080 product-service
 to run the python container (order....)
 docker run -p 5000:5000 order-service
 
-
+to run frontend container
+docker run -p 3000:3000 frontend-service
 
 
 
