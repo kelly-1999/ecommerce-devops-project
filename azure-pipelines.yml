@@ -34,7 +34,7 @@ steps:
 
 # Build Docker Images
 - script: |
-    docker build -t $(dockerHubUsername)/product-service:v1 ./product-service-java
+    docker build -t $(dockerHubUsername)/product-service:v1 ./product-service-java/product-service
     docker build -t $(dockerHubUsername)/order-service:v1 ./order-service-python
-    docker build -t $(dockerHubUsername)/frontend-service:v1 ./frontend
+    docker build -t $(dockerHubUsername)/frontend-service:v1 ./frontend/frontend
   displayName: 'Build Docker Images'
