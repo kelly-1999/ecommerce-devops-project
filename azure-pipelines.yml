@@ -27,7 +27,7 @@ steps:
 
 # Build Frontend
 - script: |
-    cd frontend
+    cd frontend/frontend
     npm install
     npm run build
   displayName: 'Build Frontend'
