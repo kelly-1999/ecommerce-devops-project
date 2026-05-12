@@ -67,7 +67,7 @@ steps:
       latest
 
 - script: |
-    cd terraform
+    cd Terraform
     terraform init
     terraform validate
   displayName: 'Terraform Validation'
