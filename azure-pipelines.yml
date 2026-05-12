@@ -65,3 +65,9 @@ steps:
     Dockerfile: './frontend/frontend/Dockerfile'
     tags: |
       latest
+
+- script: |
+    cd terraform
+    terraform init
+    terraform validate
+  displayName: 'Terraform Validation'
