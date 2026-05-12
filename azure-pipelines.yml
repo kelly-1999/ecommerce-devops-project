@@ -38,3 +38,30 @@ steps:
     docker build -t $(dockerHubUsername)/order-service:v1 ./order-service-python
     docker build -t $(dockerHubUsername)/frontend-service:v1 ./frontend/frontend
   displayName: 'Build Docker Images'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub-connection'
+    repository: 'kellykyabega/product-service'
+    command: 'buildAndPush'
+    Dockerfile: './product-service-java/product-service/Dockerfile'
+    tags: |
+      latest
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub-connection'
+    repository: 'kellykyabega/order-service'
+    command: 'buildAndPush'
+    Dockerfile: './order-service-python/Dockerfile'
+    tags: |
+      latest
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub-connection'
+    repository: 'kellykyabega/ecommerce-devops-project-frontend'
+    command: 'buildAndPush'
+    Dockerfile: './frontend/frontend/Dockerfile'
+    tags: |
+      latest
