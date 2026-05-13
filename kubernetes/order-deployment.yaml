@@ -3,9 +3,10 @@ kind: Deployment
 
 metadata:
   name: order-service
+  namespace: ecommerce
 
 spec:
-  replicas: 1
+  replicas: 2
 
   selector:
     matchLabels:
@@ -20,7 +21,15 @@ spec:
       containers:
       - name: order-service
 
-        image: kellykyabega/order-service:v1
+        image: kellykyabega/order-service:v2
 
         ports:
         - containerPort: 5000
+
+        env:
+        - name: ORDER_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: ORDER_SERVICE_URL
+

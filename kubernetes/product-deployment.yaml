@@ -3,9 +3,10 @@ kind: Deployment
 
 metadata:
   name: product-service
+  namespace: ecommerce
 
 spec:
-  replicas: 1
+  replicas: 2
 
   selector:
     matchLabels:
@@ -20,7 +21,18 @@ spec:
       containers:
       - name: product-service
 
-        image: kellykyabega/product-service:v1
+        image: kellykyabega/product-service:v2
 
         ports:
         - containerPort: 8080
+
+        env:
+        - name: PRODUCT_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: PRODUCT_SERVICE_URL
+
+
+      
+   

@@ -1,0 +1,78 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  dockerHubUsername: kellykyabega
+
+steps:
+
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '20.10.7'
+
+# Build Java Service
+- script: |
+    cd product-service-java/product-service
+    mvn clean package
+  displayName: 'Build Java Service'
+
+# Build Python Service
+- script: |
+    cd order-service-python
+    pip install -r requirements.txt
+  displayName: 'Prepare Python Service'
+
+# Build Frontend
+- script: |
+    cd frontend/frontend
+    npm install
+    npm run build
+  displayName: 'Build Frontend'
+
+# Build Docker Images
+- script: |
+    docker build -t $(dockerHubUsername)/product-service:v1 ./product-service-java/product-service
+    docker build -t $(dockerHubUsername)/order-service:v1 ./order-service-python
+    docker build -t $(dockerHubUsername)/frontend-service:v1 ./frontend/frontend
+  displayName: 'Build Docker Images'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub-connection'
+    repository: 'kellykyabega/product-service'
+    command: 'buildAndPush'
+    Dockerfile: './product-service-java/product-service/Dockerfile'
+    tags: |
+      latest
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub-connection'
+    repository: 'kellykyabega/order-service'
+    command: 'buildAndPush'
+    Dockerfile: './order-service-python/Dockerfile'
+    tags: |
+      latest
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerhub-connection'
+    repository: 'kellykyabega/ecommerce-devops-project-frontend'
+    command: 'buildAndPush'
+    Dockerfile: './frontend/frontend/Dockerfile'
+    tags: |
+      latest
+
+- task: TerraformInstaller@1
+  displayName: 'Install Terraform'
+  inputs:
+    terraformVersion: 'latest'
+
+- script: |
+    cd Terraform
+    terraform init
+    terraform validate
+  displayName: 'Terraform Validation'
