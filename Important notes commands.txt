@@ -60,12 +60,6 @@ docker tag ecommerce-devops-project-frontend kellykyabega/ecommerce-devops-proje
 docker push kellykyabega/ecommerce-devops-project-frontend:v1
 
 
-- script: |
-    docker build -t $(dockerHubUsername)/product-service:v1 ./product-service-java/product-service
-    docker build -t $(dockerHubUsername)/order-service:v1 ./order-service-python
-    docker build -t $(dockerHubUsername)/frontend-service:v1 ./frontend/frontend
-  displayName: 'Build Docker Images'
-
 
 minikube ip: 192.168.49.2
 
@@ -84,7 +78,9 @@ kubectl port-forward -n monitoring svc/prometheus-server 9090:80
 Access Prometheus = http://localhost:9090
 
 grafan password: 7KxyjX32J9ITLzQMkwXTeqRR8AHIeoa0ZdQL8N67
-login username: admin 
+login username: admin
+
+  
 
 
 
