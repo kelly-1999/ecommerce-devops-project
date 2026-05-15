@@ -80,7 +80,13 @@ Access Prometheus = http://localhost:9090
 grafan password: 7KxyjX32J9ITLzQMkwXTeqRR8AHIeoa0ZdQL8N67
 login username: admin
 
+http://ecommerce.local
+
   
+
+
+docker-compose up = This simulates local development.
+
 
 
 
