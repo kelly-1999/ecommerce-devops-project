@@ -66,10 +66,10 @@ steps:
     tags: |
       latest
 
-# - task: TerraformInstaller@1
-#   displayName: 'Install Terraform'
-#   inputs:
-#     terraformVersion: 'latest'
+- task: TerraformInstaller@1
+  displayName: 'Install Terraform'
+  inputs:
+    terraformVersion: 'latest'
 
 - script: |
     cd Terraform
